@@ -6,8 +6,11 @@ import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.santis.minharua.MinhaRua
+import com.santis.minharua.R
 import com.santis.minharua.data.model.CEP
 import com.santis.minharua.databinding.ActivitySplashBinding
 import com.santis.minharua.util.*
@@ -31,13 +34,16 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Menu
+        setSupportActionBar(binding.toolbar)
+
         // Checa CEP em SharedPreferences e Devine Objeto CEP
         sharedPreferences = getSharedPreferences("cep_key", Context.MODE_PRIVATE)
         binding.txtCep.setText(carregaCep())
         MinhaRua.cep = null
         checaCep(false)
 
-        Testes.populaTestes(this)
+        // Samples.popularSamples(this)
 
         // OnClickListener
         binding.cmdOk.setOnClickListener {
@@ -47,6 +53,10 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        android.os.Process.killProcess(android.os.Process.myPid())
+    }
     // Verifica Cep digitado, define Objeto CEP e SharedPreferences
     private fun checaCep(checaerro: Boolean) {
         // Checa CEP e Vai para MainActivity
@@ -123,5 +133,19 @@ class SplashActivity : AppCompatActivity() {
     }
     fun carregaCep(): String {
         return sharedPreferences.getString("cep_key", "") ?: ""
+    }
+
+    // Funções do Menu
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_sair) {
+            finish()
+        }
+        return true
     }
 }

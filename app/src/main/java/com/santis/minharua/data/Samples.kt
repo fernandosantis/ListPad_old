@@ -1,15 +1,14 @@
-package com.santis.minharua.util
+package com.santis.minharua.data
 
 import android.content.Context
 import com.santis.minharua.R
-import com.santis.minharua.data.MinhaRuaDatabase
 import com.santis.minharua.data.model.Incidente
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class Testes {
+class Samples {
     companion object {
-        fun populaTestes(contexto: Context) {
+        fun popularSamples(contexto: Context) {
             val db = MinhaRuaDatabase.abrirBanco(contexto)
             GlobalScope.launch {
                 for (x in 1..5) {

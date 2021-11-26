@@ -12,4 +12,9 @@ public class MinhaRua : Application() {
     override fun onCreate() {
         super.onCreate()
     }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        System.exit(0)
+    }
 }

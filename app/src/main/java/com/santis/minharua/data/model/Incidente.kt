@@ -17,9 +17,9 @@ import java.io.Serializable
 )
 data class Incidente(
     @PrimaryKey(autoGenerate = true) val inc_id: Int? = null,
-    @ColumnInfo(name = "inc_titulo") val tituloInc: String?,
-    @ColumnInfo(name = "inc_descricao") val descricaoInc: String?,
-    @ColumnInfo(name = "inc_imagem") val imagemInc: Int = R.drawable.ic_city,
-    @ColumnInfo(name = "inc_cep") val cepInc: String,
-    @ColumnInfo(name = "id_cat") val catId: Int
+    @ColumnInfo(name = "inc_titulo") var tituloInc: String?,
+    @ColumnInfo(name = "inc_descricao") var descricaoInc: String?,
+    @ColumnInfo(name = "inc_imagem") var imagemInc: Int = R.drawable.ic_city,
+    @ColumnInfo(name = "inc_cep") var cepInc: String,
+    @ColumnInfo(name = "id_cat") var catId: Int
 ) : Serializable

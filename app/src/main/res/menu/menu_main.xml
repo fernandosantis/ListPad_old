@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_sair"
+        android:icon="@drawable/ic_sair"
         android:orderInCategory="100"
-        android:title="Configuracoes"
+        android:title="Sair"
         app:showAsAction="always" />
 </menu>

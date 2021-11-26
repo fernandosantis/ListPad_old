@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         // Adicionar Incidente - FAB Buttom
         binding.cmdAddIncidente.setOnClickListener {
-            val intent = Intent(this, AddIncidente::class.java)
+            val intent = Intent(this, AddIncidenteActivity::class.java)
+            intent.putExtra("edicao", false)
             startActivity(intent)
         }
 

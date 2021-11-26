@@ -30,7 +30,7 @@
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/shp_faixas_vert.xml" value="0.20092592592592592" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/drawable/vc_street.xml" value="0.1984375" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_add_incident.xml" value="0.36390827517447655" />
-        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_add_incidente.xml" value="0.2712962962962963" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_add_incidente.xml" value="0.35989583333333336" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_camera.xml" value="0.35989583333333336" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/layout/activity_splash.xml" value="0.35435897435897434" />
@@ -44,6 +44,7 @@
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/menu/menu_add_incidente.xml" value="0.35989583333333336" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/menu/menu_main.xml" value="0.35989583333333336" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.20092592592592592" />
+        <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.27870370370370373" />
         <entry key="..\:/WorkSpace/Android/MinhaRua/app/src/main/res/xml/provider_file.xml" value="0.20052083333333334" />
       </map>
     </option>

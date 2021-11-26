@@ -1,6 +1,7 @@
 package com.santis.minharua.data
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
 import com.santis.minharua.data.model.CategoriaIncidentes
 import com.santis.minharua.data.model.Incidente
+import com.santis.minharua.ui.AddIncidenteActivity
 import com.santis.minharua.util.Image
 import com.santis.minharua.util.ViewAnimation
 import kotlinx.coroutines.GlobalScope
@@ -100,6 +102,15 @@ class MainAdapter(val incidenteList: MutableList<CategoriaIncidentes>) : Recycle
                 )
                 builder.setNegativeButton("Cancelar", null)
                 builder.show()
+            }
+
+            // Botao Editar
+            cmdEditar.setOnClickListener {
+                val intent = Intent(contexto, AddIncidenteActivity::class.java)
+                val inci = incidenteList[position]
+                intent.putExtra("edicao", true)
+                intent.putExtra("catinc", inci)
+                contexto.startActivity(intent)
             }
         }
     }

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="@color/blue_grey_100"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     tools:context=".ui.SplashActivity">
 
     <TextView
@@ -14,7 +15,27 @@
         android:background="@drawable/shp_faixas_vert"
         android:layerType="software"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/lay_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primaryDarkColor"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetStartWithNavigation="16dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <ImageView
         android:id="@+id/iv_logo"
@@ -29,7 +50,7 @@
         android:id="@+id/lay_cep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/indigo_800"
+        android:background="@color/blue_grey_900"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_logo">
@@ -40,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="CEP"
+            android:textColorHint="@color/white"
             app:helperText="Digite o Cep de sua rua"
             app:helperTextEnabled="true"
             app:helperTextTextColor="@color/white"
@@ -47,19 +69,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/ic_location"
-            app:startIconTint="@color/white"
-            android:textColorHint="@color/white"
             app:placeholderTextColor="@color/white"
-            >
+            app:startIconDrawable="@drawable/ic_location"
+            app:startIconTint="@color/white">
 
 
             <com.hipo.maskededittext.MaskedEditText
-                android:textColor="@color/white"
                 android:id="@+id/txt_cep"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="number"
+                android:textColor="@color/white"
                 app:maskPattern="#####-###"
                 app:maskType="custom"
                 app:returnPattern="########" />

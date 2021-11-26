@@ -2,22 +2,20 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:clickable="true"
-    android:id="@+id/root_item"
-    >
+    android:clickable="true">
 
     <RelativeLayout
         android:id="@+id/lay_img_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_mlarge"
         android:layout_marginHorizontal="@dimen/spacing_small"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/spacing_mlarge"
         app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_cat_cor"
@@ -32,8 +30,8 @@
             android:layout_height="@dimen/spacing_middle"
             android:layout_centerInParent="true"
             android:scaleType="fitCenter"
-            app:tint="@color/white"
-            app:srcCompat="@drawable/ic_agua" />
+            app:srcCompat="@drawable/ic_agua"
+            app:tint="@color/white" />
 
     </RelativeLayout>
 
@@ -45,34 +43,32 @@
         android:clickable="true"
         android:minHeight="?attr/actionBarSize"
         android:padding="@dimen/spacing_middle"
-        app:layout_constraintStart_toEndOf="@id/lay_img_cat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintStart_toEndOf="@id/lay_img_cat"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_icone"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/foto_rua"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/lbl_titulo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Incidente"
+            android:layout_marginHorizontal="@dimen/spacing_large"
             android:maxLines="2"
+            android:text="Incidente"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/grey_90"
-            android:layout_marginHorizontal="@dimen/spacing_large"
-            app:layout_constraintStart_toEndOf="@id/img_icone"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/img_icone"
             app:layout_constraintEnd_toStartOf="@id/cmd_expandir"
-            />
+            app:layout_constraintStart_toEndOf="@id/img_icone"
+            app:layout_constraintTop_toTopOf="@id/img_icone" />
 
 
         <ImageButton
@@ -80,76 +76,76 @@
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:srcCompat="@drawable/ic_down"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_down"
             app:tint="@color/grey_60" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/grey_10"
-        app:layout_constraintTop_toBottomOf="@id/lyt_parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/lyt_parent" />
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_cartao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_medium"
         android:layout_marginLeft="@dimen/spacing_middle"
-        android:layout_marginRight="@dimen/spacing_middle"
         android:layout_marginTop="@dimen/spacing_medium"
-        tools:visibility="visible"
+        android:layout_marginRight="@dimen/spacing_middle"
+        android:layout_marginBottom="@dimen/spacing_medium"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lyt_parent"
-        >
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/lbl_titulo_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_large"
                 android:text="Incidente"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                 android:textColor="@color/grey_90"
-                android:layout_marginHorizontal="@dimen/spacing_large"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/lbl_categoria"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/lbl_categoria"
-                android:layout_marginHorizontal="@dimen/spacing_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/spacing_medium"
                 android:text="Categoria"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/primaryColor"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/lbl_descricao"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Descricao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/spacing_large"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/grey_40"
-                app:layout_constraintTop_toBottomOf="@id/lbl_titulo_2"
-                app:layout_constraintStart_toStartOf="@id/lbl_titulo_2"
+                android:lines="2"
+                android:text="Descricao"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/grey_40"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/lbl_titulo_2"
+                app:layout_constraintTop_toBottomOf="@id/lbl_titulo_2"
 
                 />
 
@@ -157,45 +153,45 @@
                 android:id="@+id/dv_divide_1"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/grey_10"
                 android:layout_marginHorizontal="@dimen/spacing_large"
                 android:layout_marginVertical="@dimen/spacing_small"
+                android:background="@color/grey_10"
                 app:layout_constraintTop_toBottomOf="@id/lbl_descricao"
 
                 />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lay_local"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/spacing_medium"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/dv_divide_1"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                >
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dv_divide_1">
 
                 <ImageView
                     android:id="@+id/icon_location"
                     android:layout_width="@dimen/spacing_large"
                     android:layout_height="@dimen/spacing_large"
                     android:layout_marginEnd="@dimen/spacing_medium"
-                    app:srcCompat="@drawable/ic_add_map"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_add_map"
                     app:tint="@color/grey_20" />
 
                 <TextView
                     android:id="@+id/lbl_endereco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_mlarge"
                     android:text="San Francisco, CA"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/grey_40"
-                    android:layout_marginStart="@dimen/spacing_mlarge"
-                    app:layout_constraintTop_toTopOf="@id/icon_location"
                     app:layout_constraintBottom_toBottomOf="@id/icon_location"
                     app:layout_constraintStart_toStartOf="@id/icon_location"
-                    />
+                    app:layout_constraintTop_toTopOf="@id/icon_location" />
+
                 <TextView
                     android:id="@+id/lbl_bairro"
                     android:layout_width="wrap_content"
@@ -203,47 +199,40 @@
                     android:text="Bairro"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/grey_40"
-                    app:layout_constraintTop_toBottomOf="@id/lbl_endereco"
-                    app:layout_constraintStart_toStartOf="@id/lbl_endereco"
                     app:layout_constraintEnd_toEndOf="@id/lbl_endereco"
-                    />
+                    app:layout_constraintStart_toStartOf="@id/lbl_endereco"
+                    app:layout_constraintTop_toBottomOf="@id/lbl_endereco" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <View
                 android:id="@+id/dv_divide_2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/grey_10"
                 android:layout_marginVertical="@dimen/spacing_small"
+                android:background="@color/grey_10"
                 app:layout_constraintTop_toBottomOf="@id/lay_local"
 
                 />
+
             <ImageView
                 android:id="@+id/img_imagem"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintDimensionRatio="16:9"
+                android:layout_height="0dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/foto_rua"
-                app:layout_constraintTop_toBottomOf="@id/dv_divide_2"
+                app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintStart_toStartOf="parent"
-                />
-
-
-
-
-
-
+                app:layout_constraintTop_toBottomOf="@id/dv_divide_2" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:orientation="horizontal"
                 android:background="@color/cardview_dark_background"
-                app:layout_constraintTop_toBottomOf="@+id/img_imagem"
-                >
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/img_imagem">
 
                 <ImageButton
                     android:id="@+id/cmd_editar"

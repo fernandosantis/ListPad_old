@@ -7,7 +7,7 @@ import com.santis.minharua.data.model.Incidente
 interface IncidenteDao {
 
     @Update
-    suspend fun atualizarIncidente(incidente: Incidente)
+    fun atualizarIncidente(incidente: Incidente)
 
     @Query("SELECT * FROM incidentes WHERE inc_id = :id LIMIT 1")
     fun buscaIncidentePorId(id: Int): Incidente
@@ -19,8 +19,8 @@ interface IncidenteDao {
     fun excluirIncidenteporID(id: Int)
 
     @Insert
-    suspend fun inserirIncidente(incidente: Incidente)
+    fun inserirIncidente(incidente: Incidente)
 
     @Query("SELECT * FROM incidentes ORDER BY inc_id")
-    suspend fun todosIncidentes(): List<Incidente>
+    fun todosIncidentes(): List<Incidente>
 }
