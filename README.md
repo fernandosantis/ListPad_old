@@ -42,19 +42,19 @@
 
 ## Sobre o Projeto
 
-![](images/tela_video.jpg)
-
 <!-- LINK PARA O VIDEO -->
 
 ### [Link para o Video](images/conserte_essa_rua.mp4)
+
+![](images/tela_video.jpg)
+
+
 
 Este Projeto foi utilizado como Projeto integrado das disciplinas de Programação de Dispositivos Android 1 (PA1) e Banco de Dados para Computação Móvel (BDM) do IFSP do Curso de Pós-Graduação em Desenvolvimento Mobile.
 
 O Aplicativo tem como principal funcionalidade a de dar a oportunidade aos usuarios de apontarem os problemas e incidentes que ocorrem nas ruas de nossa cidade. Além de manter a lista dos incidentes cadastrados, o usuário tem a possibilidade de compartilhar em suas redes sociais. 
 
 Faz parte de uma iniciativa Eu Amo Minha Cidade que tem o objetivo fomentar e incentivar o Controle Social por todos! :smile:
-
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#top">voltar</a>)</p>
 
