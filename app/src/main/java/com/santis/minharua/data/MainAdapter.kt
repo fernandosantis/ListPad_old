@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -88,18 +89,17 @@ class MainAdapter(val incidenteList: MutableList<CategoriaIncidentes>) : Recycle
                 val builder = AlertDialog.Builder(contexto)
                 builder.setTitle("Confirma Exclusão do Incidente ?")
                 builder.setPositiveButton(
-                    "Excluir",
-                    { dialogInterface, i ->
-                        GlobalScope.launch {
-                            val db = MinhaRuaDatabase.abrirBanco(contexto)
-                            val incidente: Incidente = incidenteList[position].incidentes.first()
-                            db.incidenteDao().excluirIncidente(incidente)
-                        }
+                    "Excluir"
+                ) { dialogInterface, i ->
+                    GlobalScope.launch {
+                        val db = MinhaRuaDatabase.abrirBanco(contexto)
+                        val incidente: Incidente = incidenteList[position].incidentes.first()
+                        db.incidenteDao().excluirIncidente(incidente)
                         incidenteList.removeAt(position)
-                        notifyDataSetChanged()
-                        Snackbar.make(it, "Incidente Excluido", Snackbar.LENGTH_SHORT).show()
                     }
-                )
+                    notifyDataSetChanged()
+                    Toast.makeText(contexto, "Incidente Excluido", Toast.LENGTH_SHORT).show()
+                }
                 builder.setNegativeButton("Cancelar", null)
                 builder.show()
             }

@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isEmpty
 import com.google.android.material.snackbar.Snackbar
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
@@ -130,10 +129,10 @@ class AddIncidenteActivity : AppCompatActivity() {
         var temerro: Boolean = false
         binding.txtTitulo.error = null
         if (binding.txtTitulo.editText?.text.isNullOrBlank()) {
-                binding.txtTitulo
-                    .error = binding.txtTitulo.helperText
-                temerro = true
-            }
+            binding.txtTitulo
+                .error = binding.txtTitulo.helperText
+            temerro = true
+        }
 
         binding.txtDescricao.error = null
         if (binding.txtDescricao.editText?.text.isNullOrBlank()) {
