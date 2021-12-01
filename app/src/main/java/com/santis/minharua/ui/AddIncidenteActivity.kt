@@ -6,6 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isEmpty
+import com.google.android.material.snackbar.Snackbar
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
 import com.santis.minharua.data.MinhaRuaDatabase
@@ -113,7 +115,8 @@ class AddIncidenteActivity : AppCompatActivity() {
                             db.incidenteDao().atualizarIncidente(incidente)
                         }
                     }.join()
-                    Toast.makeText(contexto, "Informações Salvas", Toast.LENGTH_LONG).show()
+                    Snackbar.make(binding.root, "Informações Salvas", Snackbar.LENGTH_LONG).show()
+                    //Toast.makeText(contexto, "Informações Salvas", Toast.LENGTH_LONG).show()
                     finish()
                 }
             }
@@ -123,8 +126,31 @@ class AddIncidenteActivity : AppCompatActivity() {
     }
 
     private fun checaForm(): Boolean {
-        //TODO Verificar o Formulario
 
-        return true
+        var temerro: Boolean = false
+        binding.txtTitulo.error = null
+        if (binding.txtTitulo.editText?.text.isNullOrBlank()) {
+                binding.txtTitulo
+                    .error = binding.txtTitulo.helperText
+                temerro = true
+            }
+
+        binding.txtDescricao.error = null
+        if (binding.txtDescricao.editText?.text.isNullOrBlank()) {
+            binding.txtDescricao
+                .error = binding.txtDescricao.helperText
+            temerro = true
+        }
+
+        binding.cboCategoria.error = null
+        if (binding.cboCatAutocomplete.text.isNullOrBlank()) {
+            binding.cboCategoria
+                .error = binding.cboCategoria.helperText
+            temerro = true
+        }
+        if (temerro) {
+            Snackbar.make(binding.root, "Informações Incompletas", Snackbar.LENGTH_LONG).show()
+        }
+        return !temerro
     }
 }
