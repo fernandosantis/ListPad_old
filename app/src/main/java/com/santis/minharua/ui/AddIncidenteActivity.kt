@@ -114,8 +114,8 @@ class AddIncidenteActivity : AppCompatActivity() {
                             incidente.catId = catId
                             db.incidenteDao().atualizarIncidente(incidente)
                         }
-                        // Snackbar.make(binding.root, "Informações Salvas", Snackbar.LENGTH_LONG).show()
                     }.join()
+                    // Snackbar.make(binding.root, "Informações Salvas", Snackbar.LENGTH_LONG).show()
                     Toast.makeText(contexto, "Informações Salvas", Toast.LENGTH_LONG).show()
                     finish()
                 }
