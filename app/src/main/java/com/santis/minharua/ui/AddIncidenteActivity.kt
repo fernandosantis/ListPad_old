@@ -116,7 +116,8 @@ class AddIncidenteActivity : AppCompatActivity() {
                         }
                         // Snackbar.make(binding.root, "Informações Salvas", Snackbar.LENGTH_LONG).show()
                     }.join()
-                    Toast.makeText(contexto, "Informações Salvas", Toast.LENGTH_LONG).show()
+                    Snackbar.make(binding.root, "Informações Salvas", Snackbar.LENGTH_LONG).show()
+                    //Toast.makeText(contexto, "Informações Salvas", Toast.LENGTH_LONG).show()
                     finish()
                 }
             }
