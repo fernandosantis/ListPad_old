@@ -52,9 +52,9 @@
 
 Este Projeto foi utilizado como Projeto integrado das disciplinas de Programação de Dispositivos Android 1 (PA1) e Banco de Dados para Computação Móvel (BDM) do IFSP do Curso de Pós-Graduação em Desenvolvimento Mobile.
 
-O Aplicativo tem como principal funcionalidade a de dar a oportunidade aos usuarios de apontarem os problemas e incidentes que ocorrem nas ruas de nossa cidade. Além de manter a lista dos incidentes cadastrados, o usuário tem a possibilidade de compartilhar em suas redes sociais. 
+O Aplicativo tem como principal funcionalidade a de dar a oportunidade aos usuários de apontarem os problemas e incidentes que ocorrem nas ruas de nossas cidades. Além de manter a lista dos incidentes cadastrados, o usuário tem a possibilidade de compartilhar em suas redes sociais. 
 
-Faz parte de uma iniciativa Eu Amo Minha Cidade que tem o objetivo fomentar e incentivar o Controle Social por todos! :smile:
+Faz parte da iniciativa Eu Amo Minha Cidade que tem objetivo de fomentar e incentivar o Controle Social por todos! :smile:
 
 <p align="right">(<a href="#top">voltar</a>)</p>
 
@@ -84,7 +84,7 @@ Este projeto foi desenvolvido utilizando-se de:
 - [x] Busca por CEP via API
 - [ ] Integração com Câmera
 - [ ] Integração com Maps / Geo Posicionamento de cada Incidente
-- [ ] Integração com BeckEnd / WebSite
+- [ ] Integração com BackEnd / WebSite
 
 <p align="right">(<a href="#top">voltar</a>)</p>
 
