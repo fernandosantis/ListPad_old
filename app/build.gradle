@@ -55,4 +55,10 @@ dependencies {
 
     // MakeditText
     implementation 'com.hipo.maskededittext:maskededittext:1.2.10'
+
+
+    // Para Acessar a Camera
+    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
+
 }

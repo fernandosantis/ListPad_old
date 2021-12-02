@@ -13,7 +13,10 @@ import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
 import com.santis.minharua.data.model.CEP
 import com.santis.minharua.databinding.ActivitySplashBinding
-import com.santis.minharua.util.*
+import com.santis.minharua.util.ConvertStreamString
+import com.santis.minharua.util.ViewAnimation
+import com.santis.minharua.util.hideKeyboard
+import com.santis.minharua.util.parteFrase
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -137,7 +140,7 @@ class SplashActivity : AppCompatActivity() {
 
     // Funções do Menu
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }

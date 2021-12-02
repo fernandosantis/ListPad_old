@@ -38,6 +38,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("edicao", false)
             startActivity(intent)
         }
+/*        Implementacao.implementaCategorias(this)
+
+       Para implementar manualmente as Categorias
+       Atualmente estão sendo implantadas na
+       criação do banco de dados.*/
 
         updateUI()
     }
