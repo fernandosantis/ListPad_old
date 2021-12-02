@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!-- Permissoes para usar a Câmera -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:name=".MinhaRua"
         android:allowBackup="true"
@@ -14,6 +17,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaRua"
         >
+        <!-- Provides para Salvar Imagens -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <activity
             android:name=".ui.AddIncidenteActivity"
             android:exported="true"/>

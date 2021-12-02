@@ -1,9 +1,23 @@
 package com.santis.minharua.util
 
+import android.content.ContentResolver
 import android.content.Context
+import android.net.Uri
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import java.io.*
+
+/**
+https://www.py4u.net/discuss/603996
+ */
+fun Context.resourceUri(resourceId: Int): Uri = with(resources) {
+    Uri.Builder()
+        .scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
+        .authority(getResourcePackageName(resourceId))
+        .appendPath(getResourceTypeName(resourceId))
+        .appendPath(getResourceEntryName(resourceId))
+        .build()
+}
 
 // Ocultar KeyBoard
 fun View.hideKeyboard() {

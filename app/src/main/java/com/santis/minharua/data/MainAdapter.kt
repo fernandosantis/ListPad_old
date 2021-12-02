@@ -2,6 +2,7 @@ package com.santis.minharua.data
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,6 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
 import com.santis.minharua.data.model.CategoriaIncidentes
@@ -36,7 +36,7 @@ class MainAdapter(val incidenteList: MutableList<CategoriaIncidentes>) : Recycle
             // Cabeçalho
             imgCatCor.setColorFilter(ContextCompat.getColor(imgCatCor.context, incidenteList[position].categoria.corCat), android.graphics.PorterDuff.Mode.SRC_IN)
             imgCatIcon.setImageResource(incidenteList[position].categoria.iconeCat)
-            imgIcone.setImageResource(incidenteList[position].incidentes[0].imagemInc)
+            imgIcone.setImageURI(Uri.parse(incidenteList[position].incidentes[0].imagemInc))
             lblTitulo.text = incidenteList[position].incidentes[0].tituloInc
             cmdExpandir.setImageResource(R.drawable.ic_down)
             cmdExpandir.tag = "off"
@@ -44,7 +44,7 @@ class MainAdapter(val incidenteList: MutableList<CategoriaIncidentes>) : Recycle
             // CardView
             cvCartao.visibility = View.GONE
             lblTitulo2.text = incidenteList[position].incidentes[0].tituloInc
-            imgImagem.setImageResource(incidenteList[position].incidentes[0].imagemInc)
+            imgImagem.setImageURI(Uri.parse(incidenteList[position].incidentes[0].imagemInc))
             /*fadeOut(imgImagem)*/
             lblDescricao.text = incidenteList[position].incidentes[0].descricaoInc
             lblEndereco.text = "${MinhaRua.cep?.logradouro} ${MinhaRua.cep?.endereco}"
@@ -133,12 +133,12 @@ class MainAdapter(val incidenteList: MutableList<CategoriaIncidentes>) : Recycle
     }
 
     inner class IncidenteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val cvCartao = view.findViewById<CardView>(R.id.cv_cartao)
         val cmdApagar = view.findViewById<ImageView>(R.id.cmd_apagar)
         val cmdCompartilhar = view.findViewById<ImageView>(R.id.cmd_compartilhar)
         val cmdEditar = view.findViewById<ImageView>(R.id.cmd_editar)
         val cmdExpandir = view.findViewById<ImageView>(R.id.cmd_expandir)
         val contexto: Context = view.findViewById<ConstraintLayout>(R.id.root_item).context
+        val cvCartao = view.findViewById<CardView>(R.id.cv_cartao)
         val imgCatCor = view.findViewById<ImageView>(R.id.img_cat_cor)
         val imgCatIcon = view.findViewById<ImageView>(R.id.img_cat_icon)
         val imgIcone = view.findViewById<ImageView>(R.id.img_icone)

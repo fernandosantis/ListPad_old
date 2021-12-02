@@ -32,12 +32,20 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.bottomAppBar)
         binding.bottomAppBar.setNavigationOnClickListener { finish() }
 
+        // Alterar CEP - Clicando na Placa da Rua
+        binding.layPlacaRua.setOnClickListener { finish() }
+
         // Adicionar Incidente - FAB Buttom
         binding.cmdAddIncidente.setOnClickListener {
             val intent = Intent(this, AddIncidenteActivity::class.java)
             intent.putExtra("edicao", false)
             startActivity(intent)
         }
+/*        Implementacao.implementaCategorias(this)
+
+       Para implementar manualmente as Categorias
+       Atualmente estão sendo implantadas na
+       criação do banco de dados.*/
 
         updateUI()
     }

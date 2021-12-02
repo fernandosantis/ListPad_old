@@ -2,15 +2,16 @@ package com.santis.minharua.util
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.Transformation
 
 object ViewAnimation {
+
+    interface AnimListener {
+        fun onFinish()
+    }
 
     fun collapse(v: View) {
         val initialHeight = v.measuredHeight
@@ -29,20 +30,7 @@ object ViewAnimation {
                 return true
             }
         }
-        a.setDuration((initialHeight / v.context.resources.displayMetrics.density).toLong())
-        v.startAnimation(a)
-    }
-
-    fun expand(v: View, animListener: AnimListener) {
-        val a = expandAction(v)
-        a.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {
-                animListener.onFinish()
-            }
-
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
+        a.duration = (initialHeight / v.context.resources.displayMetrics.density).toLong()
         v.startAnimation(a)
     }
 
@@ -53,13 +41,13 @@ object ViewAnimation {
 
     private fun expandAction(v: View): Animation {
         v.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        val targtetHeight = v.measuredHeight
+        val targetHeight = v.measuredHeight
         v.layoutParams.height = 0
         v.visibility = View.VISIBLE
         val a: Animation = object : Animation() {
             override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
                 v.layoutParams.height =
-                    if (interpolatedTime == 1f) ViewGroup.LayoutParams.WRAP_CONTENT else (targtetHeight * interpolatedTime).toInt()
+                    if (interpolatedTime == 1f) ViewGroup.LayoutParams.WRAP_CONTENT else (targetHeight * interpolatedTime).toInt()
                 v.requestLayout()
             }
 
@@ -67,7 +55,7 @@ object ViewAnimation {
                 return true
             }
         }
-        a.setDuration((targtetHeight / v.context.resources.displayMetrics.density).toLong())
+        a.duration = (targetHeight / v.context.resources.displayMetrics.density).toLong()
         v.startAnimation(a)
         return a
     }
@@ -76,7 +64,7 @@ object ViewAnimation {
         fadeIn(v, null)
     }
 
-    fun fadeIn(v: View, animListener: AnimListener?) {
+    private fun fadeIn(v: View, animListener: AnimListener?) {
         v.visibility = View.GONE
         v.alpha = 0.0f
         // Prepare the View for the animation
@@ -96,7 +84,7 @@ object ViewAnimation {
         fadeOut(v, null)
     }
 
-    fun fadeOut(v: View, animListener: AnimListener?) {
+    private fun fadeOut(v: View, animListener: AnimListener?) {
         v.alpha = 1.0f
         // Prepare the View for the animation
         v.animate()
@@ -108,167 +96,5 @@ object ViewAnimation {
                 }
             })
             .alpha(0.0f)
-    }
-
-    fun fadeOutIn(view: View) {
-        view.alpha = 0f
-        val animatorSet = AnimatorSet()
-        val animatorAlpha = ObjectAnimator.ofFloat(view, "alpha", 0f, 0.5f, 1f)
-        ObjectAnimator.ofFloat(view, "alpha", 0f).start()
-        animatorAlpha.duration = 500
-        animatorSet.play(animatorAlpha)
-        animatorSet.start()
-    }
-
-    fun flyInDown(v: View, animListener: AnimListener?) {
-        v.visibility = View.VISIBLE
-        v.alpha = 0.0f
-        v.translationY = 0f
-        v.translationY = -v.height.toFloat()
-        // Prepare the View for the animation
-        v.animate()
-            .setDuration(200)
-            .translationY(0f)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    animListener?.onFinish()
-                    super.onAnimationEnd(animation)
-                }
-            })
-            .alpha(1.0f)
-            .start()
-    }
-
-    fun flyOutDown(v: View, animListener: AnimListener?) {
-        v.visibility = View.VISIBLE
-        v.alpha = 1.0f
-        v.translationY = 0f
-        // Prepare the View for the animation
-        v.animate()
-            .setDuration(200)
-            .translationY(v.height.toFloat())
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    animListener?.onFinish()
-                    super.onAnimationEnd(animation)
-                }
-            })
-            .alpha(0.0f)
-            .start()
-    }
-
-    fun hideFab(fab: View) {
-        val moveY = 2 * fab.height
-        fab.animate()
-            .translationY(moveY.toFloat())
-            .setDuration(300)
-            .start()
-    }
-
-    fun hideScale(v: View) {
-        fadeOut(v, null)
-    }
-
-    fun hideScale(v: View, animListener: AnimListener?) {
-        v.animate()
-            .scaleY(0f)
-            .scaleX(0f)
-            .setDuration(200)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    animListener?.onFinish()
-                    super.onAnimationEnd(animation)
-                }
-            })
-            .start()
-    }
-
-    fun initShowOut(v: View) {
-        v.visibility = View.GONE
-        v.translationY = v.height.toFloat()
-        v.alpha = 0f
-    }
-
-    fun rotateFab(v: View, rotate: Boolean): Boolean {
-        v.animate().setDuration(200)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    super.onAnimationEnd(animation)
-                }
-            })
-            .rotation(if (rotate) 135f else 0f)
-        return rotate
-    }
-
-    fun showFab(fab: View) {
-        fab.animate()
-            .translationY(0f)
-            .setDuration(300)
-            .start()
-    }
-
-    fun showIn(v: View) {
-        v.visibility = View.VISIBLE
-        v.alpha = 0f
-        v.translationY = v.height.toFloat()
-        v.animate()
-            .setDuration(200)
-            .translationY(0f)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    super.onAnimationEnd(animation)
-                }
-            })
-            .alpha(1f)
-            .start()
-    }
-
-    fun showOut(v: View) {
-        v.visibility = View.VISIBLE
-        v.alpha = 1f
-        v.translationY = 0f
-        v.animate()
-            .setDuration(200)
-            .translationY(v.height.toFloat())
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    v.visibility = View.GONE
-                    super.onAnimationEnd(animation)
-                }
-            }).alpha(0f)
-            .start()
-    }
-
-    fun showScale(v: View) {
-        showScale(v, null)
-    }
-
-    fun showScale(v: View, animListener: AnimListener?) {
-        v.animate()
-            .scaleY(1f)
-            .scaleX(1f)
-            .setDuration(200)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    animListener?.onFinish()
-                    super.onAnimationEnd(animation)
-                }
-            })
-            .start()
-    }
-
-    fun tradeView(view1: View, view2: View) {
-        var now: Boolean = false
-        fadeOut(view1)
-        Handler().postDelayed({
-            view1.visibility = View.INVISIBLE
-            view2.visibility = View.VISIBLE
-            fadeIn(view2)
-            now = false
-        }, 500L)
-    }
-
-    interface AnimListener {
-        fun onFinish()
     }
 }

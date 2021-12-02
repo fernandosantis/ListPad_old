@@ -82,7 +82,7 @@ Este projeto foi desenvolvido utilizando-se de:
 - [x] Compartilhar Incidentes
 - [x] Categorias dos Incidentes
 - [x] Busca por CEP via API
-- [ ] Integração com Câmera
+- [x] **Novo** Integração com Câmera
 - [ ] Integração com Maps / Geo Posicionamento de cada Incidente
 - [ ] Integração com BackEnd / WebSite
 
@@ -132,5 +132,6 @@ Gostaria de agradecer a todos que sem de uma forma ou de outra serviram como ins
 * [Pablo Dalbem](https://github.com/pdalbem)
 * [Pedro Nobile](https://github.com/northonh)
 * [Font Awesome](https://fontawesome.com)
+* [Sunil Patel](https://www.semicolonworld.com/profile/7/Sunil+Patel)
 
 <p align="right">(<a href="#top">voltar</a>)</p>

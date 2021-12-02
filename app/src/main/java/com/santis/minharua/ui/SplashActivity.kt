@@ -2,7 +2,6 @@ package com.santis.minharua.ui
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +12,9 @@ import com.santis.minharua.MinhaRua
 import com.santis.minharua.R
 import com.santis.minharua.data.model.CEP
 import com.santis.minharua.databinding.ActivitySplashBinding
-import com.santis.minharua.util.*
+import com.santis.minharua.util.ConvertStreamString
+import com.santis.minharua.util.hideKeyboard
+import com.santis.minharua.util.parteFrase
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -26,9 +27,6 @@ class SplashActivity : AppCompatActivity() {
     // ViewBinding
     lateinit var binding: ActivitySplashBinding
 
-    // SharePreferences
-    lateinit var sharedPreferences: SharedPreferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
@@ -38,8 +36,8 @@ class SplashActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         // Checa CEP em SharedPreferences e Devine Objeto CEP
-        sharedPreferences = getSharedPreferences("cep_key", Context.MODE_PRIVATE)
-        binding.txtCep.setText(carregaCep())
+        MinhaRua.sharedPreferences = getSharedPreferences("cep_key", Context.MODE_PRIVATE)
+        binding.txtCep.setText(MinhaRua.carregaCep())
         MinhaRua.cep = null
         checaCep(false)
 
@@ -47,7 +45,7 @@ class SplashActivity : AppCompatActivity() {
 
         // OnClickListener
         binding.cmdOk.setOnClickListener {
-            salvarCep(binding.txtCep.text.toString())
+            MinhaRua.salvarCep(binding.txtCep.text.toString())
             checaCep(true)
             it.hideKeyboard()
         }
@@ -70,7 +68,6 @@ class SplashActivity : AppCompatActivity() {
             if (checaerro == true) {
                 val url = "https://viacep.com.br/ws/" + binding.txtCep.getParsedText()
                     .toString() + "/json/"
-                ViewAnimation.fadeIn(binding.pgCep)
                 MyAsyncTask().execute(url)
             }
         }
@@ -115,29 +112,17 @@ class SplashActivity : AppCompatActivity() {
                 val cidade = json.getString("localidade")
                 val estado = json.getString("uf")
                 val complemento = json.getString("complemento")
-                ViewAnimation.fadeOut(binding.pgCep)
                 MinhaRua.cep = CEP(cep, logradouro, endereco, bairro, cidade, estado, complemento)
-                salvarCep(cep)
+                MinhaRua.salvarCep(cep)
             } catch (ex: Exception) {
                 Log.d("Erro: ", ex.toString())
             }
         }
     }
 
-    // Funcoes para SharedPreferences
-
-    fun salvarCep(texto: String) {
-        val editor: SharedPreferences.Editor = sharedPreferences.edit()
-        editor.putString("cep_key", texto)
-        editor.apply()
-    }
-    fun carregaCep(): String {
-        return sharedPreferences.getString("cep_key", "") ?: ""
-    }
-
     // Funções do Menu
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
